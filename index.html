@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Cooperacai: cooperativa de produtores de açaí das ilhas do Pará, em parceria com a Secretaria Municipal de Agricultura.">
+<meta property="og:title" content="Cooperacai">
+<meta property="og:description" content="O açaí das ilhas, colhido por quem vive delas.">
+<meta name="theme-color" content="#240A28">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 28 28%22%3E%3Ccircle cx=%2210%22 cy=%2217%22 r=%226%22 fill=%22%238C4A9C%22/%3E%3Ccircle cx=%2218%22 cy=%2215%22 r=%226%22 fill=%22%235E1D66%22/%3E%3Ccircle cx=%2214%22 cy=%229%22 r=%225%22 fill=%22%23A95FB9%22/%3E%3C/svg%3E">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cooperacai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4F6;
+  --surface:#FFFFFF;
+  --surface-2:#EFE8EE;
+  --ink:#1E1220;
+  --muted:#6A5B6C;
+  --line:#DDD2DB;
+  --acai:#4A1450;
+  --acai-deep:#240A28;
+  --fruit:#8C4A9C;
+  --palm:#2F6A45;
+  --palm-soft:#DCEBE0;
+  --on-deep:#F4ECF4;
+  --on-deep-muted:#C7B3C9;
+  --display:"Gloock", "Georgia", "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --maxw:1180px;
+  --gutter:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#140A16;
+    --surface:#1D1120;
+    --surface-2:#26172A;
+    --ink:#F1E8F1;
+    --muted:#B3A0B5;
+    --line:#3A283D;
+    --acai:#C58BD3;
+    --fruit:#D9A6E4;
+    --palm:#7CC596;
+    --palm-soft:#1C3325;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#140A16;
+  --surface:#1D1120;
+  --surface-2:#26172A;
+  --ink:#F1E8F1;
+  --muted:#B3A0B5;
+  --line:#3A283D;
+  --acai:#C58BD3;
+  --fruit:#D9A6E4;
+  --palm:#7CC596;
+  --palm-soft:#1C3325;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--fruit);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--palm)}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:60ch}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--acai-deep) 92%,transparent);backdrop-filter:blur(10px);color:var(--on-deep)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:22px;letter-spacing:.01em}
+.brand svg{flex:none}
+.nav{display:flex;gap:26px;font-size:15px}
+.nav a{text-decoration:none;color:var(--on-deep-muted);transition:color .2s}
+.nav a:hover{color:var(--on-deep)}
+.nav .cta{color:var(--acai-deep);background:var(--on-deep);padding:7px 14px;border-radius:999px;font-weight:600}
+.nav .cta:hover{color:var(--acai-deep);background:#fff}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.25);color:var(--on-deep);border-radius:999px;padding:6px 14px;font:500 14px var(--body);cursor:pointer}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--acai-deep);padding:8px var(--gutter) 20px}
+  .nav.open{display:flex}
+  .nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav .cta{margin-top:12px;text-align:center;border:0}
+}
+
+/* ---------- hero ---------- */
+.hero{background:var(--acai-deep);color:var(--on-deep);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:clamp(56px,9vw,112px) clamp(64px,9vw,120px)}
+.hero .eyebrow{color:#A9D8B7}
+.hero h1{font-size:clamp(46px,7.4vw,98px);letter-spacing:-.015em;margin-top:18px}
+.hero h1 em{font-style:normal;color:#D7A8E3}
+.hero .lede{color:var(--on-deep-muted);margin-top:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-light{background:var(--on-deep);color:var(--acai-deep)}
+.btn-ghost{border-color:rgba(244,236,244,.35);color:var(--on-deep)}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.berries{position:relative;width:100%;max-width:100%;aspect-ratio:4/5}
+.berries canvas{width:100%;height:100%;display:block}
+.hero-foot{border-top:1px solid rgba(255,255,255,.1)}
+.hero-foot .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:26px}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--on-deep-muted)}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .berries{max-width:320px;aspect-ratio:1/1;margin-inline:auto;order:-1;margin-bottom:-24px}
+  .hero-foot .wrap{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---------- sections ---------- */
+section.block{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:end;margin-bottom:56px}
+.head h2{font-size:clamp(36px,5vw,62px);margin-top:14px}
+@media (max-width:860px){.head{grid-template-columns:1fr;gap:18px;margin-bottom:40px}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.pillar{padding:32px 32px 8px 0}
+.pillar + .pillar{padding-left:32px;border-left:1px solid var(--line)}
+.pillar h3{font-size:26px;margin-bottom:12px}
+.pillar p{color:var(--muted)}
+@media (max-width:860px){
+  .about-grid{grid-template-columns:1fr}
+  .pillar,.pillar + .pillar{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}
+}
+
+/* process */
+.process{background:var(--surface-2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:s;list-style:none;padding:0;margin:0}
+.step{position:relative;padding-top:54px}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;top:0;left:0;font-family:var(--mono);font-size:13px;color:var(--palm);letter-spacing:.08em}
+.step::after{content:"";position:absolute;top:30px;left:0;right:-18px;height:1px;background:var(--line)}
+.step:last-child::after{right:0}
+.step i{position:absolute;top:25px;left:0;width:11px;height:11px;border-radius:50%;background:var(--acai);z-index:1}
+.step h3{font-size:22px;margin-bottom:8px}
+.step p{font-size:15.5px;color:var(--muted)}
+.term{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:1px 7px;border-radius:5px;white-space:nowrap}
+@media (max-width:980px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .step{padding:0 0 30px 40px}
+  .step::before{position:static;display:block;margin-bottom:6px}
+  .step::after{top:14px;bottom:0;left:5px;right:auto;width:1px;height:auto}
+  .step:last-child::after{display:none}
+  .step i{top:4px}
+}
+
+/* safra */
+.safra-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3vw,40px)}
+.safra-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin-bottom:28px}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.chart-scroll{overflow-x:auto}
+.months{display:grid;grid-template-columns:repeat(12,minmax(40px,1fr));gap:8px;align-items:end;min-width:520px;height:220px;border-bottom:1px solid var(--line);position:relative}
+.bar{border-radius:6px 6px 2px 2px;background:var(--line);position:relative;transition:filter .2s}
+.bar.peak{background:var(--acai)}
+.bar.mid{background:color-mix(in srgb,var(--acai) 45%,var(--line))}
+.bar:hover{filter:brightness(1.1)}
+.bar.now::after{content:"hoje";position:absolute;top:-24px;left:50%;transform:translateX(-50%);font:500 11px var(--mono);color:var(--palm);letter-spacing:.06em}
+.mlabels{display:grid;grid-template-columns:repeat(12,minmax(40px,1fr));gap:8px;min-width:520px;margin-top:10px;font:500 12px var(--mono);color:var(--muted);text-align:center;text-transform:uppercase;letter-spacing:.06em}
+.safra-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.safra-notes b{display:block;font-family:var(--display);font-weight:400;font-size:22px;margin-bottom:6px}
+.safra-notes p{color:var(--muted);font-size:15.5px}
+@media (max-width:760px){.safra-notes{grid-template-columns:1fr;gap:20px}}
+
+/* secretaria */
+.sec{background:var(--acai-deep);color:var(--on-deep)}
+.sec .eyebrow{color:#A9D8B7}
+.sec .lede{color:var(--on-deep-muted)}
+.sec-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px}
+.programs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
+.program{background:var(--acai-deep);padding:26px}
+.program .tag{font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#D7A8E3}
+.program h3{font-size:23px;margin:10px 0 8px}
+.program p{font-size:15px;color:var(--on-deep-muted)}
+.notices h3{font-size:26px;margin-bottom:18px}
+.notice{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:18px 0;border-top:1px solid rgba(255,255,255,.12);text-decoration:none}
+.notice:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.notice time{font:500 13px var(--mono);color:var(--on-deep-muted);font-variant-numeric:tabular-nums;padding-top:3px;min-width:74px}
+.notice strong{display:block;font-weight:600;font-size:16px}
+.notice small{display:block;color:var(--on-deep-muted);font-size:14px;margin-top:3px}
+.status{display:inline-block;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-top:8px}
+.status.open{background:#A9D8B7;color:#12301D}
+.status.soon{background:rgba(255,255,255,.14);color:var(--on-deep)}
+.status.closed{border:1px solid rgba(255,255,255,.25);color:var(--on-deep-muted)}
+@media (max-width:900px){.sec-grid{grid-template-columns:1fr}.programs{grid-template-columns:1fr}}
+
+/* join */
+.join-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.checklist{list-style:none;padding:0;margin:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.checklist li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.checklist svg{margin-top:3px}
+.checklist strong{display:block;font-weight:600}
+.checklist span{color:var(--muted);font-size:15.5px}
+.quote{background:var(--palm-soft);border-radius:18px;padding:clamp(26px,3.5vw,44px)}
+.quote blockquote{margin:0;font-family:var(--display);font-size:clamp(24px,2.6vw,32px);line-height:1.22;text-wrap:balance}
+.quote figcaption{margin-top:20px;font-size:14.5px;color:var(--muted)}
+.quote figcaption b{color:var(--ink);font-weight:600}
+@media (max-width:860px){.join-grid{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--surface-2)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+.info{display:grid;gap:22px;align-content:start}
+.info div{border-top:1px solid var(--line);padding-top:14px}
+.info dt{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.info dd{margin:0;font-size:17px;user-select:all}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3vw,36px);display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:620px){.row{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 13px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--fruit);outline-offset:0;border-color:transparent}
+.submit{justify-self:start;background:var(--acai);color:var(--paper);border:0;cursor:pointer;font:600 15.5px var(--body);padding:13px 24px;border-radius:999px}
+:root[data-theme="dark"] .submit{color:#1A0B1D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .submit{color:#1A0B1D}}
+.form-note{font-size:14px;color:var(--palm);font-weight:500}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--acai-deep);color:var(--on-deep-muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;padding-block:40px}
+footer .brand{color:var(--on-deep)}
+footer small{display:block;margin-top:8px;max-width:48ch}
+
+.reveal{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.reveal.d2{animation-delay:.12s}.reveal.d3{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion: reduce){.reveal{animation:none}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Cooperacai, início">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="10" cy="17" r="6" fill="#8C4A9C"/><circle cx="18" cy="15" r="6" fill="#5E1D66"/><circle cx="14" cy="9" r="5" fill="#A95FB9"/>
+        <path d="M14 4 C15 1, 19 1, 21 2" stroke="#A9D8B7" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+      Cooperacai
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav">
+      <a href="#cooperativa">A cooperativa</a>
+      <a href="#cadeia">Da várzea à tigela</a>
+      <a href="#safra">Safra</a>
+      <a href="#secretaria">Secretaria</a>
+      <a href="#associe-se">Associe-se</a>
+      <a class="cta" href="#contato">Fale conosco</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow reveal">Cooperativa de produtores de açaí · Pará</p>
+        <h1 class="reveal d2">O açaí das ilhas, <em>colhido por quem vive delas.</em></h1>
+        <p class="lede reveal d3">A Cooperacai reúne famílias ribeirinhas que manejam açaizais nativos de várzea. Organizamos a coleta, garantimos preço justo ao produtor e levamos um fruto rastreado, fresco e seguro do rio até a mesa.</p>
+        <div class="hero-actions reveal d3">
+          <a class="btn btn-light" href="#associe-se">Quero ser cooperado</a>
+          <a class="btn btn-ghost" href="#secretaria">Programas da Secretaria</a>
+        </div>
+      </div>
+      <div class="berries" aria-hidden="true"><canvas id="berryCanvas"></canvas></div>
+    </div>
+    <div class="hero-foot">
+      <div class="wrap">
+        <div class="stat"><b>312</b><span>famílias cooperadas</span></div>
+        <div class="stat"><b>14</b><span>comunidades ribeirinhas</span></div>
+        <div class="stat"><b>1.800 t</b><span>de fruto por safra</span></div>
+        <div class="stat"><b>100%</b><span>açaí de manejo nativo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="cooperativa">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">A cooperativa</p>
+          <h2>Floresta em pé, renda na comunidade.</h2>
+        </div>
+        <p class="lede">Nascemos da necessidade de tirar o produtor da mão do atravessador. Hoje a Cooperacai negocia em conjunto, investe em estrutura de beneficiamento e devolve parte das sobras a quem colhe.</p>
+      </div>
+      <div class="about-grid">
+        <div class="pillar">
+          <h3>Preço justo</h3>
+          <p>Preço da rasa definido em assembleia e publicado toda semana da safra. O cooperado sabe quanto vai receber antes de subir no pé.</p>
+        </div>
+        <div class="pillar">
+          <h3>Manejo que preserva</h3>
+          <p>Açaizais de várzea manejados com técnicas de baixo impacto, mantendo a diversidade da mata e as outras espécies da ilha.</p>
+        </div>
+        <div class="pillar">
+          <h3>Qualidade rastreada</h3>
+          <p>Cada lote registra comunidade, data de coleta e horário de chegada ao ponto de beneficiamento. Fruto batido em até 24 horas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block process" id="cadeia">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Da várzea à tigela</p>
+          <h2>Cinco etapas, poucas horas.</h2>
+        </div>
+        <p class="lede">O açaí começa a perder qualidade logo depois de colhido. Por isso toda a nossa cadeia é desenhada para ser curta e rápida.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><i></i><h3>Coleta</h3><p>O peconheiro sobe o açaizeiro com a <span class="term">peconha</span> e corta o cacho maduro, de manhã cedo.</p></li>
+        <li class="step"><i></i><h3>Debulha</h3><p>Os frutos são separados do cacho sobre lona limpa, nunca direto no chão.</p></li>
+        <li class="step"><i></i><h3>Transporte</h3><p>O fruto segue em <span class="term">rasas</span> de fibra, de barco, até o ponto de recebimento.</p></li>
+        <li class="step"><i></i><h3>Beneficiamento</h3><p>Lavagem, <span class="term">branqueamento</span> e despolpa em unidade com boas práticas.</p></li>
+        <li class="step"><i></i><h3>Frio</h3><p>A polpa é embalada e congelada, pronta para feiras, escolas e distribuidores.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="safra">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Calendário da safra</p>
+          <h2>O ano segue o ritmo do fruto.</h2>
+        </div>
+        <p class="lede">No estuário do Pará, a safra forte vai do fim do inverno amazônico até o fim do ano. Na entressafra, a cooperativa foca em manejo, capacitação e manutenção.</p>
+      </div>
+      <div class="safra-card">
+        <div class="safra-top">
+          <p class="eyebrow" style="color:var(--muted)">Oferta de fruto ao longo do ano · intensidade relativa</p>
+          <div class="legend">
+            <span><i style="background:var(--acai)"></i>Safra</span>
+            <span><i style="background:color-mix(in srgb,var(--acai) 45%,var(--line))"></i>Transição</span>
+            <span><i style="background:var(--line)"></i>Entressafra</span>
+          </div>
+        </div>
+        <div class="chart-scroll">
+          <div class="months" id="months" role="img" aria-label="Oferta baixa de janeiro a junho, subindo em julho, pico de agosto a novembro e queda em dezembro."></div>
+          <div class="mlabels" id="mlabels"></div>
+        </div>
+        <div class="safra-notes">
+          <div><b>Jan a jun</b><p>Entressafra. Manejo dos açaizais, limpeza de touceiras e cursos de boas práticas.</p></div>
+          <div><b>Ago a nov</b><p>Pico da colheita. Recebimento diário nos pontos de coleta e preço publicado semanalmente.</p></div>
+          <div><b>Dez</b><p>Fechamento da safra, prestação de contas e assembleia de distribuição das sobras.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block sec" id="secretaria">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Secretaria parceira</p>
+          <h2>Políticas públicas que chegam à beira do rio.</h2>
+        </div>
+        <p class="lede">Em parceria com a Secretaria Municipal de Agricultura, a Cooperacai é a porta de entrada do produtor para assistência técnica, compras públicas e crédito rural.</p>
+      </div>
+      <div class="sec-grid">
+        <div class="programs">
+          <div class="program"><span class="tag">ATER</span><h3>Assistência técnica</h3><p>Técnicos visitam as comunidades para orientar manejo, adubação e produtividade do açaizal.</p></div>
+          <div class="program"><span class="tag">PNAE</span><h3>Açaí na merenda</h3><p>Venda da polpa para a alimentação escolar do município, com prioridade para a agricultura familiar.</p></div>
+          <div class="program"><span class="tag">PAA</span><h3>Compra direta</h3><p>Aquisição de alimentos da cooperativa para doação a entidades e famílias em insegurança alimentar.</p></div>
+          <div class="program"><span class="tag">CAF</span><h3>Cadastro do produtor</h3><p>Apoio na emissão do Cadastro da Agricultura Familiar, exigido para acessar programas e crédito.</p></div>
+        </div>
+        <div class="notices">
+          <h3>Editais e avisos</h3>
+          <a class="notice" href="#contato">
+            <time>10 OUT</time>
+            <div><strong>Chamada pública PNAE 2027</strong><small>Fornecimento de polpa de açaí para escolas municipais.</small><span class="status open">Inscrições abertas</span></div>
+          </a>
+          <a class="notice" href="#contato">
+            <time>28 OUT</time>
+            <div><strong>Curso de boas práticas no beneficiamento</strong><small>Turma para batedores e cooperados. Vagas limitadas.</small><span class="status soon">Em breve</span></div>
+          </a>
+          <a class="notice" href="#contato">
+            <time>04 SET</time>
+            <div><strong>Mutirão de emissão do CAF</strong><small>Atendimento itinerante nas comunidades das ilhas.</small><span class="status closed">Encerrado</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="associe-se">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Associe-se</p>
+          <h2>Como se tornar cooperado.</h2>
+        </div>
+        <p class="lede">Podem se associar produtores e produtoras que manejam açaizal na região de atuação da cooperativa. O processo é feito com apoio da nossa equipe.</p>
+      </div>
+      <div class="join-grid">
+        <ul class="checklist">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="var(--palm)" stroke-width="1.5"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="var(--palm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Documento com foto e CPF</strong><span>Do titular e, se houver, do cônjuge.</span></div></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="var(--palm)" stroke-width="1.5"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="var(--palm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>CAF ativo</strong><span>Não tem? A Secretaria ajuda a emitir.</span></div></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="var(--palm)" stroke-width="1.5"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="var(--palm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Comprovação da área</strong><span>Declaração da comunidade ou documento da terra.</span></div></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="var(--palm)" stroke-width="1.5"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="var(--palm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Cota-parte</strong><span>Valor de entrada definido em assembleia, que pode ser parcelado na safra.</span></div></li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="none" stroke="var(--palm)" stroke-width="1.5"/><path d="M5.5 9.2l2.3 2.3 4.7-4.9" fill="none" stroke="var(--palm)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Aprovação em assembleia</strong><span>A entrada é votada na assembleia seguinte ao pedido.</span></div></li>
+        </ul>
+        <figure class="quote" style="margin:0">
+          <blockquote>“Antes a gente vendia para quem passasse no rio, pelo preço que ele quisesse. Hoje eu sei o preço da rasa antes de sair de casa.”</blockquote>
+          <figcaption><b>Dona Raimunda</b> · cooperada da comunidade do Furo Grande</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contato">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2>Fale com a cooperativa.</h2>
+        </div>
+        <p class="lede">Atendimento para produtores, compradores e órgãos públicos. Respondemos em até dois dias úteis.</p>
+      </div>
+      <div class="contact-grid">
+        <dl class="info">
+          <div><dt>Sede</dt><dd>Endereço da sede · Belém, PA</dd></div>
+          <div><dt>Telefone e WhatsApp</dt><dd>(91) 0000-0000</dd></div>
+          <div><dt>E-mail</dt><dd>contato@cooperacai.coop.br</dd></div>
+          <div><dt>Atendimento</dt><dd>Seg a sex, 7h às 16h · Na safra, sábados até 12h</dd></div>
+        </dl>
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <label for="f-nome">Nome<input id="f-nome" name="nome" autocomplete="name" required></label>
+            <label for="f-contato">Telefone ou e-mail<input id="f-contato" name="contato" required></label>
+          </div>
+          <label for="f-assunto">Assunto
+            <select id="f-assunto" name="assunto">
+              <option>Quero ser cooperado</option>
+              <option>Comprar polpa de açaí</option>
+              <option>Programas da Secretaria</option>
+              <option>Imprensa e parcerias</option>
+              <option>Outro assunto</option>
+            </select>
+          </label>
+          <label for="f-msg">Mensagem<textarea id="f-msg" name="mensagem"></textarea></label>
+          <button class="submit" type="submit">Enviar mensagem</button>
+          <p class="form-note" id="formNote" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#inicio">Cooperacai</a>
+      <small>Cooperativa dos produtores de açaí das ilhas, em parceria com a Secretaria Municipal de Agricultura.</small>
+    </div>
+    <div>
+      <small>© 2026 Cooperacai<br>Protótipo: números, depoimento e editais são ilustrativos.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // mobile nav
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+
+  // safra chart
+  var names=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  var vals=[18,12,10,10,12,20,45,78,100,96,80,50];
+  var now=new Date().getMonth();
+  var m=document.getElementById('months'), l=document.getElementById('mlabels');
+  vals.forEach(function(v,i){
+    var b=document.createElement('div');
+    b.className='bar '+(v>=75?'peak':v>=40?'mid':'');
+    if(i===now) b.classList.add('now');
+    b.style.height=v+'%';
+    b.title=names[i]+': '+(v>=75?'safra':v>=40?'transição':'entressafra');
+    m.appendChild(b);
+    var s=document.createElement('span'); s.textContent=names[i]; l.appendChild(s);
+  });
+
+  // form
+  var f=document.getElementById('contactForm'), note=document.getElementById('formNote');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('f-nome'), c=document.getElementById('f-contato');
+    if(!n.value.trim()||!c.value.trim()){
+      note.textContent='Preencha seu nome e um telefone ou e-mail para continuarmos.';
+      note.style.color='#B4415A'; note.hidden=false; (n.value.trim()?c:n).focus(); return;
+    }
+    note.style.color='';
+    note.textContent='Formulário de demonstração: o envio será ativado na versão final do site.';
+    note.hidden=false;
+  });
+
+  // berry cluster canvas
+  var cv=document.getElementById('berryCanvas'), ctx=cv.getContext('2d');
+  var seed=7; function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+  var berries=[], stems=[];
+  function build(){
+    berries=[];stems=[];seed=7;
+    // raceme: main stalk curving down, with rachillae
+    var n=11;
+    for(var i=0;i<n;i++){
+      var t=i/(n-1);
+      var ox=0.30+t*0.40+Math.sin(t*3)*0.05, oy=0.08+t*0.18;
+      var ang=Math.PI*0.5 + (t-0.5)*1.1 + (rnd()-0.5)*0.25;
+      var len=0.55+rnd()*0.25 - Math.abs(t-0.5)*0.25;
+      stems.push({x:ox,y:oy,a:ang,len:len});
+      var k=Math.round(9+len*14);
+      for(var j=2;j<k;j++){
+        var u=j/k;
+        var px=ox+Math.cos(ang)*len*u*0.9, py=oy+Math.sin(ang)*len*u*0.9;
+        var side=(j%2?1:-1);
+        berries.push({x:px+side*0.018+(rnd()-0.5)*0.012, y:py+(rnd()-0.5)*0.012, r:0.020+rnd()*0.006, d:rnd()});
+      }
+    }
+    berries.sort(function(a,b){return a.d-b.d});
+  }
+  function draw(time){
+    var w=cv.clientWidth,h=cv.clientHeight,dpr=Math.min(window.devicePixelRatio||1,2);
+    if(cv.width!==Math.round(w*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    var S=Math.min(w,h*0.85);
+    var offX=(w-S)/2, offY=(h-S*1.05)/2;
+    var sway=time?Math.sin(time/2400)*0.006:0;
+    // glow
+    var g=ctx.createRadialGradient(w*0.5,h*0.5,10,w*0.5,h*0.5,Math.min(w,h)*0.5);
+    g.addColorStop(0,'rgba(140,74,156,.28)');g.addColorStop(1,'rgba(140,74,156,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    // main stalk
+    ctx.strokeStyle='#6E8A55';ctx.lineWidth=Math.max(2,S*0.009);ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(offX+S*0.18,offY);ctx.quadraticCurveTo(offX+S*0.45,offY+S*0.05,offX+S*0.72,offY+S*0.27);ctx.stroke();
+    // rachillae
+    ctx.lineWidth=Math.max(1,S*0.004);ctx.strokeStyle='#8A7A4E';
+    stems.forEach(function(s){
+      ctx.beginPath();
+      ctx.moveTo(offX+s.x*S,offY+s.y*S);
+      ctx.lineTo(offX+(s.x+Math.cos(s.a)*s.len*0.95+sway)*S,offY+(s.y+Math.sin(s.a)*s.len*0.95)*S);
+      ctx.stroke();
+    });
+    // berries
+    berries.forEach(function(b){
+      var x=offX+(b.x+sway*(b.y*1.4))*S, y=offY+b.y*S, r=b.r*S;
+      var gr=ctx.createRadialGradient(x-r*0.35,y-r*0.4,r*0.1,x,y,r);
+      var base=b.d<0.5?['#6C2A78','#3A0E40','#1C0620']:['#58205F','#2E0A33','#150418'];
+      gr.addColorStop(0,base[0]);gr.addColorStop(0.55,base[1]);gr.addColorStop(1,base[2]);
+      ctx.fillStyle=gr;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+      // bloom highlight
+      ctx.fillStyle='rgba(230,210,240,.22)';ctx.beginPath();ctx.arc(x-r*0.35,y-r*0.38,r*0.22,0,Math.PI*2);ctx.fill();
+    });
+  }
+  build();
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loop(t){draw(t);if(!reduce)requestAnimationFrame(loop)}
+  requestAnimationFrame(loop);
+  window.addEventListener('resize',function(){draw(0)});
+})();
+</script>
+
+</body>
+</html>
