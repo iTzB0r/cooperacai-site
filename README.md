@@ -2,6 +2,8 @@
 
 Site de página única para uma cooperativa de produtores de açaí das ilhas do Pará, em parceria com a Secretaria Municipal de Agricultura. É um projeto de front-end em um único arquivo (`index.html`), sem dependências nem etapa de build.
 
+**Demo ao vivo:** https://cooperacai-site.vercel.app
+
 ## Seções
 
 Início · Cooperativa · Cadeia (as cinco etapas, do fruto ao consumidor) · Safra (gráfico por mês) · Secretaria · Associe-se · Contato
@@ -22,7 +24,7 @@ Abra o `index.html` no navegador.
 
 ## Observação
 
-Os dados de contato do site (como o telefone) são de exemplo.
+É um protótipo: os números, o depoimento e os avisos exibidos no site são ilustrativos.
 
 ## Autor
 
